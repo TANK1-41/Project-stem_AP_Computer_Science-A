@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+class Assignment4 
+{
+  public static void main(String[] args) 
+  {
+        
+     String vowels[] = {"a", "e", "i", "o", "u"," "};
+
+        System.out.println("Type the message to be shortened");
+        Scanner inputSys = new Scanner(System.in);
+        String input = inputSys.nextLine();
+ //this is done twice because project stem test case does not work with to lower above
+        input = input.toLowerCase();
+        //algorithm  1-------------------------------------------------
+        System.out.println("\nAlgorithm 1");
+        StringBuilder sb = new StringBuilder(input.substring(0,1));
+        int removedVowels = 0, removedDups = 0;
+        String LastLetter = "";
+
+        for(int i=1; i< input.length(); i ++){
+            Boolean add = true;
+            boolean VowelRomoved = false;
+            for(int j = 0; j<5; j++){
+              if(vowels[j].equals(input.substring(i,i+1))){
+                  if(!(LastLetter.equals(" "))) {
+                      add = false;
+                      removedVowels++;
+                      VowelRomoved = true;
+                  }
+              }
+            }
+                if (!(LastLetter.equals(input.substring(i,i+1)))) {
+                    if(add){sb.append(input.substring(i,i+1));}
+                }else if(!VowelRomoved){
+                    removedDups++;
+                }
+                LastLetter = input.substring(i, i + 1);
+        }
+
+        System.out.println("Vowels removed: "+ removedVowels+"\n" +
+                "Repeats removed: " + removedDups);
+        System.out.println("Algorithm 1 message:" + sb.toString() + " \n" +
+                "Algorithm 1 characters saved: " + (removedDups + removedVowels));
+
+
+        //algorithm  2-------------------------------------------------
+        System.out.println("\nAlgorithm 2");
+        StringBuilder sb2 = new StringBuilder();
+
+        int unqieChars = 0;
+        //loop through each character of the string
+        for (int i = 0; i < input.length(); i++) {
+            //loop through and find the number of times a letter repeats
+            int letterRepeat = 0;
+            for (int j = 0; j < input.length(); j++) {
+                if(input.substring(j,j+1).equals(input.substring(i,i+1))){
+                    letterRepeat++;
+                }
+            }
+            if(!sb2.toString().contains(input.substring(i,i+1)) && input.charAt(i) != ' ') {
+                unqieChars++;
+                sb2.append(letterRepeat + input.substring(i, i + 1));
+            }
+        }
+        System.out.println("Unique characters found: "+unqieChars);
+        System.out.println("Algorithm 2 message: "+sb2.toString());
+        System.out.println("Algorithm 2 characters saved: " + (input.length()-sb2.length()));
+    }
+    
+  
+}

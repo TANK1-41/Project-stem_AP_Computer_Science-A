@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Assignment3 
+{
+
+  public static void main(String[] args) 
+  {
+    /* Write your code here */
+   //nested
+          /* Write your code here */
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Welcome. What is your name?");
+        String name = scan.nextLine();
+        System.out.println("Hello "+name+". Are you ready to crack the code?");
+        String ready = scan.nextLine();
+        String C_ready = "yes";
+        ready = ready.toLowerCase();
+        if(ready.equals(C_ready)) {
+
+            System.out.println("PHASE 1");
+            System.out.println("Enter a string:");
+            String threeStr = scan.nextLine();
+            if (threeStr.length()== 3) {
+
+                System.out.println("Correct!");
+
+                System.out.println("PHASE 2");
+                System.out.println("Enter a number:");
+                int number = scan.nextInt();
+                if (((number == 19) || ((number >= 35) && (number < 78)))) {
+                    System.out.println("Correct!");
+                    System.out.println("PHASE 3");
+                    System.out.println("Enter a number:");
+                    int number2 = scan.nextInt();
+                    if (((number2 == Math.abs(number2) && number2 != 0) && (number2 % 2 == 0||number2 ==2)) || (number2%10 == 1)) {
+
+
+                        System.out.println("Correct!");
+                        System.out.println("You have cracked the code!");
+                    }else{
+                        System.out.println("Sorry, that was incorrect!");
+                        System.out.println("Better luck next time!");
+
+                    }
+                }else{
+                    System.out.println("Sorry, that was incorrect!");
+                    System.out.println("Better luck next time!");
+                }
+            }else{
+                System.out.println("Sorry, that was incorrect!");
+                System.out.println("Better luck next time!");
+            }
+        }else{
+        }
+}
+}
